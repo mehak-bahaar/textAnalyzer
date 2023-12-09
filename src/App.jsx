@@ -36,5 +36,6 @@ function App() {
     </div>
   );
 }
+//TO DO: add alerts from bootstrap
 
 export default App
