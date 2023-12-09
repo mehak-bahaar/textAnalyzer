@@ -8,16 +8,6 @@ const Navbar = (props) => {
     setIsChecked(!isChecked);
     {props.ModeHandler()}
   }
-  const textlight = () =>{
-    if(props.Mode === "light"){
-      console.log("dark")
-      // return("dark")
-    }else{
-      console.log("light")
-      // return("light")
-    }
-  }
-  console.log(textlight)
   const style = {
     backgroundColor: isChecked ? "green" : "gray",
     color: isChecked ? "white" : "black",
@@ -35,7 +25,8 @@ const Navbar = (props) => {
   return (
     <div>
       <nav
-        className={`navbar navbar-expand-lg bg-${props.Mode} navbar-${props.Mode} text-${props.Mode === "dark" ? "light" : "dark"}`}
+        className={`navbar navbar-expand-lg  navbar-${props.Mode} text-${props.Mode === "dark" ? "light" : "dark"}`}
+        style={{backgroundColor:"transparent"}}
       >
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
