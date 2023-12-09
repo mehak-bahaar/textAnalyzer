@@ -55,10 +55,7 @@ const TextForm = (props) => {
     }
   return (
     <div
-      className={`textForm text-${
-        props.Mode === "dark" ? "light" : "dark"
-      } `}
-
+      className={`textForm text-${props.Mode === "dark" ? "light" : "dark"} `}
     >
       <div className="container">
         <h1 className="my-3 ">{props.heading}</h1>
@@ -75,37 +72,63 @@ const TextForm = (props) => {
             rows="8"
             value={text}
             onChange={handleChange}
+            placeholder="Enter Text to Analyze..."
+            style={{
+              opacity: 0.5,
+              border:
+                props.Mode === "light"
+                  ? "1px solid #2C2E2E"
+                  : "1px solid white",
+            }}
           ></textarea>
         </div>
-        <button className="btn btn-outline-success m-3" onClick={handleUpClick}>
+        <button
+          className={`btn btn-${
+            props.Mode === "dark" ? "outline-" : ""
+          }success m-3`}
+          onClick={handleUpClick}
+        >
           Convert To Uppercase
         </button>
         <button
-          className="btn btn-outline-success m-3"
+          className={`btn btn-${
+            props.Mode === "dark" ? "outline-" : ""
+          }success m-3`}
           onClick={handleLowClick}
         >
           Convert To Lowercase
         </button>
         <button
-          className="btn btn-outline-success m-3"
+          className={`btn btn-${
+            props.Mode === "dark" ? "outline-" : ""
+          }success m-3`}
           onClick={handleCapitalClick}
         >
           Capitalize
         </button>
         <button
-          className="btn btn-outline-success m-3 copy-button"
+          className={`btn btn-${
+            props.Mode === "dark" ? "outline-" : ""
+          }success m-3`}
           onClick={handleExtraSpaces}
         >
           Remove Extra Spaces
         </button>
         <button
-          className="btn btn-outline-success m-3 copy-button"
+          className={`btn btn-${
+            props.Mode === "dark" ? "outline-" : ""
+          }success m-3`}
           onClick={handleCopyText}
         >
           Copy Text
         </button>
         {showCopiedContainer && <div className="copied">Copied</div>}
-        <button className="btn btn-outline-danger m-3" onClick={handleClear}>
+        <button
+          className={`btn btn-${
+            props.Mode === "dark" ? "outline-" : ""
+          }danger m-3`}
+          onClick={handleClear}
+        >
           Clear
         </button>
       </div>
@@ -117,7 +140,9 @@ const TextForm = (props) => {
         <p>{text.split(".").length} sentences</p>
         <p>{0.008 * text.split(" ").length} Minutes Read</p>
         <h2>Preview</h2>
-        <p>{text}</p>
+        <p>
+          {text.length > 0 ? text : "Enter text in above textbox to Preview"}
+        </p>
       </div>
     </div>
   );
