@@ -1,11 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 
 const Navbar = (props) => {
+  const [isChecked, setIsChecked] = useState(true);
+  const switchChangeHandler = ()=>{
+    setIsChecked(!isChecked);
+    {props.ModeHandler()}
+  }
+  const textlight = () =>{
+    if(props.Mode === "light"){
+      console.log("dark")
+      // return("dark")
+    }else{
+      console.log("light")
+      // return("light")
+    }
+  }
+  console.log(textlight)
+  const style = {
+    backgroundColor: isChecked ? "green" : "gray",
+    color: isChecked ? "white" : "black",
+    border: "none",
+    boxShadow: "none"
+  };
+
+    const changeModeStatement = () => {
+      if(props.Mode === "dark"){
+        return("Enable Light Mode");
+      }else{
+        return("Enable Dark Mode");
+      }
+    }
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
+      <nav
+        className={`navbar navbar-expand-lg bg-${props.Mode} navbar-${props.Mode} text-${props.Mode === "dark" ? "light" : "dark"}`}
+      >
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             {props.title}
@@ -34,7 +65,7 @@ const Navbar = (props) => {
                 </a>
               </li>
             </ul>
-            <form className="d-flex" role="search">
+            {/* <form className="d-flex" role="search">
               <input
                 className="form-control me-2 bg-dark text-light"
                 type="search"
@@ -44,7 +75,26 @@ const Navbar = (props) => {
               <button className="btn btn-outline-success" type="submit">
                 Search
               </button>
-            </form>
+            </form> */}
+            <div className="form-check form-switch">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckChecked"
+                // defaultChecked
+                checked={isChecked}
+                style={style}
+                onChange={switchChangeHandler}
+              />
+              <label
+                className={`form-check-label `}
+                htmlFor="flexSwitchCheckChecked"
+                
+              >{changeModeStatement()}
+                
+              </label>
+            </div>
           </div>
         </div>
       </nav>

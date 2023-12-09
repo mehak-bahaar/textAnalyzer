@@ -13,6 +13,11 @@ const TextForm = (props) => {
         let newText = text.toLowerCase()
         setText(newText)
     }
+    const handleExtraSpaces = (e) => {
+        e.preventDefault()
+        let newText = text. split(/[  ]+/)
+        setText(newText.join(" "))
+    }
     const handleCopyText = (e) => {
         e.preventDefault()
     navigator.clipboard
@@ -49,16 +54,23 @@ const TextForm = (props) => {
         setText(e.target.value)
     }
   return (
-    <div className="textForm ">
+    <div
+      className={`textForm text-${
+        props.Mode === "dark" ? "light" : "dark"
+      } `}
+
+    >
       <div className="container">
-        <h1 className="my-3">{props.heading}</h1>
+        <h1 className="my-3 ">{props.heading}</h1>
         <div className="mb-3">
           <label
             htmlFor="exampleFormControlTextarea1"
             className="form-label"
           ></label>
           <textarea
-            className="form-control bg-dark text-light custom-outline"
+            className={`form-control bg-${props.Mode} text-${
+              props.Mode === "dark" ? "light" : "dark"
+            } custom-outline`}
             id="exampleFormControlTextarea1"
             rows="8"
             value={text}
@@ -82,13 +94,17 @@ const TextForm = (props) => {
         </button>
         <button
           className="btn btn-outline-success m-3 copy-button"
+          onClick={handleExtraSpaces}
+        >
+          Remove Extra Spaces
+        </button>
+        <button
+          className="btn btn-outline-success m-3 copy-button"
           onClick={handleCopyText}
         >
           Copy Text
-          </button>
-          {showCopiedContainer && (
-            <div className='copied'>Copied</div>
-          )}
+        </button>
+        {showCopiedContainer && <div className="copied">Copied</div>}
         <button className="btn btn-outline-danger m-3" onClick={handleClear}>
           Clear
         </button>
