@@ -47,6 +47,7 @@ function App() {
     </div>
   );
 }
+//TO DO: add alerts from bootstrap
 
 //NOTE: had to remove react router because to navigate on my about page because i want to host it on github pages that doesn't support React Router using HTML-5 historyAPI that uses Browser history.
 // i have mentioned my reason but has not deleted my code so that me code proves my competency and can be observed by other developers.
