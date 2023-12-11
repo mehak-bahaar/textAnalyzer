@@ -29,7 +29,7 @@
         object-fit: cover;
     }
     .bgimg{
-        background-image: url("/text-utils/public/profile oic.jpg");
+        background-image: url("/text-utils/public/profile-pic.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
